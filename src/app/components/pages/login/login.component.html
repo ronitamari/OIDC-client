@@ -1,0 +1,23 @@
+<div class="page-content">
+  <div class="login">
+    <mat-card class="auth-card">
+      <mat-tab-group>
+        <mat-tab label="Sign In">
+          <div class="tab-content">
+            <div class="welcome-section">
+              <h2>Welcome Back</h2>
+              <p>Sign in with OIDC to access to data security website</p>
+            </div>
+
+              <button mat-raised-button (click)="onSignIn()" class="submit-button">
+                OIDC with GOOGLE
+              </button>
+          </div>
+        </mat-tab>
+      </mat-tab-group>
+    </mat-card>
+  </div>
+  <div class="product-overview">
+    <app-product-overview></app-product-overview>
+  </div>
+</div>

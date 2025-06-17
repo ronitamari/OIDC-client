@@ -1,0 +1,28 @@
+<app-tool-bar></app-tool-bar>
+<div class="all-page">
+<mat-card appearance="outlined" class="main-card">
+
+<div class="dashboard-container">
+  <!-- <mat-sidenav-container class="sidenav-container">
+    <mat-sidenav mode="side" opened class="sidenav">
+    </mat-sidenav> -->
+    
+    <div class="sidebar-content title-container">
+      <img [src]="user.photo" alt="Profile" class="avatar">
+      <h2 class="name title">{{ user.displayName }}</h2>
+    </div>
+
+    <!-- <mat-sidenav-content class="content"> -->
+      <section class="section">
+        <h3 class="section-title title">About:</h3>
+        <div class="info-grid">
+          <div><strong>Full Name:</strong> {{ user.displayName }}</div>
+          <div><strong>Email:</strong> {{ user.email }}</div>
+        </div>
+      </section>
+
+    <!-- </mat-sidenav-content>
+  </mat-sidenav-container> -->
+</div>
+  </mat-card>
+</div>
