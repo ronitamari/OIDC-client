@@ -1,11 +1,4 @@
-import { Component, signal } from '@angular/core';
-import {
-  AbstractControl,
-  FormBuilder,
-  FormGroup,
-  ValidationErrors,
-  Validators,
-} from '@angular/forms';
+import { Component } from '@angular/core';
 import appConfig from '../../../../../config';
 
 @Component({
@@ -14,8 +7,7 @@ import appConfig from '../../../../../config';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
-  constructor() {
-  }
+  constructor() {}
 
   onSignIn() {
     window.location.href = `${appConfig.baseUrl}/auth/google`;
