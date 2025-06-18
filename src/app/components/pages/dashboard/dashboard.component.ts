@@ -1,38 +1,51 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { DashboardService } from 'src/app/services/dashboard.service';
 
 @Component({
   selector: 'app-dashboard',
-  templateUrl:  './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss']
+  templateUrl: './dashboard.component.html',
+  styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent {
   user = { displayName: '', email: '', photo: '' };
+  pictureUrl!: Observable<string>;
 
-  constructor(private route: ActivatedRoute, private router: Router) {}
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private dashboardService: DashboardService
+  ) {}
 
   ngOnInit(): void {
-    this.route.queryParams.subscribe(params => {
+    this.route.queryParams.subscribe((params) => {
       const token = params['token'];
+      console.log('token: ' + token);
+
       if (token) {
         localStorage.setItem('jwt_token', token);
 
         const payload = this.parseJwt(token);
         console.log(payload);
-        
+
         if (payload) {
           this.user = {
             displayName: payload.displayName,
             email: payload.email,
-            photo: payload.photo
+            photo: payload.photo,
           };
         }
-        
+
         this.router.navigate([], {
           queryParams: {},
-          replaceUrl: true
+          replaceUrl: true,
         });
       }
+    });
+
+    this.dashboardService.getPicture().subscribe((res) => {
+      this.pictureUrl = res.picture;
     });
   }
 
